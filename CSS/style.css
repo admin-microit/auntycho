@@ -258,6 +258,7 @@ body {
     border: 2px solid #ffffff;
 }
 
+
 /* Mobile Toggle Button */
 .custom-mobile-toggle {
     display: block;
@@ -268,11 +269,7 @@ body {
     border-radius: 0.5rem;
     cursor: pointer;
 }
-@media (min-width: 1024px) {
-    .custom-mobile-toggle {
-        display: none;
-    }
-}
+
 .custom-mobile-toggle:hover {
     background-color: #f5f5f4;
 }
@@ -327,19 +324,17 @@ body {
     opacity: 0.3;
 }
 
-/* Content Container (relative, max-w-5xl, mx-auto, text-center, space-y-6) */
 .custom-hero-content {
     position: relative;
-    max-width: 64rem; /* max-w-5xl နဲ့ ညီမျှ */
+    max-width: 64rem; 
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* space-y-6 ကဲ့သို့ အကွာအဝေး */
+    gap: 1.5rem; 
 }
 
-/* Title ပုံစံ (text-3xl sm:text-5xl font-bold tracking-tight leading-relaxed) */
 .custom-hero-title {
     font-size: 1.875rem; /* text-3xl */
     font-weight: 700;
@@ -429,25 +424,22 @@ body {
     color: #1b4332;
 }
 
-/* Drawer Overlay (Modal နောက်ခံ အမည်းစပ်နှင့် blur) */
 .custom-drawer-overlay {
     position: fixed;
     inset: 0;
     z-index: 9999;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
-    display: none; /* မူလအစမှာ လုံးဝ ပိတ်ထားရန် */
+    display: none; 
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
 
-/* ဖွင့်လိုက်တဲ့အခါ ပေါ်လာစေရန် (JS ဖြင့် .active class ထည့်ပေးရန်) */
 .custom-drawer-overlay.active {
     display: block;
     opacity: 1;
 }
 
-/* Drawer Side Panel (ဘယ်ဘက်မှ ထွက်လာမည့် Box) */
 .custom-drawer-content {
     position: fixed;
     top: 0;
@@ -499,7 +491,60 @@ body {
     color: #57534e;
 }
 
-/* Category Links inside Drawer */
+/* ==========================================================
+   CATEGORY CAROUSEL STYLES
+   ========================================================== */
+
+/* Category Card Hover & Smooth Transition */
+.category-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.category-card img {
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(8, 28, 21, 0.15) !important;
+    border-color: #d4af37 !important;
+}
+
+.category-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Gradient Overlay for Better Text Visibility */
+.category-overlay {
+    background: linear-gradient(180deg, rgba(8, 28, 21, 0.2) 0%, rgba(8, 28, 21, 0.8) 100%);
+    transition: background 0.3s ease;
+}
+
+.category-card:hover .category-overlay {
+    background: linear-gradient(180deg, rgba(8, 28, 21, 0.3) 0%, rgba(8, 28, 21, 0.85) 100%);
+}
+
+/* Custom Navigation Buttons (Previous / Next) */
+.custom-carousel-nav-btn {
+    width: 36px;
+    height: 36px;
+    background-color: #f4f1ea;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #081c15;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.custom-carousel-nav-btn:hover {
+    background-color: #081c15;
+    color: #d4af37;
+    border-color: #d4af37;
+}
+
 .custom-category-list {
     display: flex;
     flex-direction: column;
@@ -644,83 +689,180 @@ body {
     transform: scale(1.05);
 }
 
-/* Jewelry Banner */
-.jewelry-hero-bg {
-    background-image: url('../Images/jewelry.jpg');
-    background-size: cover;
-    background-position: center right; /* ပုံကို ညာဘက်သို့ ပိုရောက်စေရန် */
-    background-repeat: no-repeat;
+/* ================================
+        JEWELRY SECTION
+   ================================ */
+
+/* 1. Section & Background Styling */
+.jewelry-split-hero {
+    background-color: #fdfbf7; /* Cream Background */
     position: relative;
-    border-bottom: 1px solid var(--color-brand-700, #1b4332);
+    overflow: hidden;
 }
 
-.jewelry-hero-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, 
-        rgba(8, 28, 21, 0.95) 0%,        /* --color-brand-800 opacity 95% */
-        rgba(27, 67, 50, 0.85) 45%,      /* --color-brand-700 opacity 85% */
-        rgba(252, 251, 247, 0.2) 100%    /* --color-cream opacity 20% */
-    );
-    z-index: 1;
+/* 2. Image Wrapper & Shadow */
+.jewelry-img-wrapper {
+    box-shadow: 0 10px 30px rgba(8, 28, 21, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.jewelry-hero-bg .container {
-    position: relative;
-    z-index: 2;
-    font-family: var(--font-myanmar, 'Pyidaungsu', sans-serif);
+/* 3. Dark Glass Badges (ပုံပေါ်တွင် တင်မည့် Badge များ) */
+.badge-dark-glass {
+    background: rgba(8, 28, 21, 0.85) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.5) !important;
 }
 
-.banner-title {
-    font-size: 1.35rem;
-    color: #ffffff;
-    line-height: 1.4;
+/* 4. Typography & Brand Colors */
+.text-brand-800 {
+    color: #081c15 !important; 
 }
 
-@media (min-width: 768px) {
-    .banner-title {
-        font-size: 1.75rem;
-    }
+.text-brand-700 {
+    color: #1b4332 !important;
 }
 
-/* Gold Theme Text Classes */
-.text-dark-gold {
-    color: var(--color-gold-400, #e5c158);
+.text-gold-dark {
+    color: #b8860b !important; 
+    font-weight: 800;
 }
 
-.text-gold {
-    color: var(--color-gold-500, #d4af37);
+.gold-accent-line {
+    width: 45px;
+    height: 3px;
+    background-color: #d4af37;
+    border-radius: 2px;
 }
 
-/* ဖော်ပြချက် စာသား (Dark Theme မို့ စာသားအဖြူရောင်စပ် ထားပေးပါသည်) */
-.banner-desc {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--color-brand-100, #e1eee6);
-}
-
-/* ရွှေရောင် ခလုတ် (Gold Button) */
-.btn-warm-gold {
-    background-color: var(--color-gold-400, #e5c158);
-    color: var(--color-brand-800, #081c15);
-    border: none;
+/* 5. Feature Tag Pills (Light Theme) */
+.tag-pill-light {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #1b4332;
+    background-color: #f4f1ea;
+    border: 1px solid #d4af37;
+    padding: 0.2rem 0.75rem;
     border-radius: 50rem;
-    font-size: 0.875rem;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 3px 10px rgba(229, 193, 88, 0.3);
+}
+
+/* 6. Custom Buttons */
+.btn-warm-gold {
+    background-color: #d4af37;
+    color: #081c15;
+    border: 1.5px solid #d4af37;
+    padding: 0.6rem 1.75rem !important; 
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;       
+    justify-content: center;   
+    gap: 0.5rem;               
+    transition: all 0.3s ease;
 }
 
 .btn-warm-gold:hover {
-    background-color: var(--color-gold-500, #d4af37);
-    color: #000000;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    background-color: #c59b27;
+    border-color: #c59b27;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-outline-brand-700 {
+    border: 1.5px solid #1b4332;
+    color: #1b4332;
+    background: transparent;
+    padding: 0.6rem 1.75rem !important; 
+    font-size: 0.95rem; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-brand-700:hover {
+    background: #1b4332;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(27, 67, 50, 0.15);
+}
+
+/* 7. Helper Font Sizes */
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.text-xxs {
+    font-size: 0.68rem;
+}
+
+/* ==========================================================
+   EXTENDED IMAGE CARDS STYLES
+   ========================================================== */
+
+.new-arrivals-banner {
+    background-color: #f7f3ec; /* Cream Background */
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Image Card ကို ပိုရှည်စေရန် အမြင့် (height) ချိန်ညှိခြင်း */
+.arrival-card-extended {
+    height: 190px; /* လိုအပ်သလို 170px မှ 210px ထိ တိုးမြှင့်နိုင်သည် */
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background-color: #081c15;
+}
+
+.arrival-card-extended img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.arrival-card-extended:hover img {
+    transform: scale(1.06);
+}
+
+/* Dark Gradient Overlay for Readability */
+.card-dark-overlay {
+    background: linear-gradient(180deg, rgba(8, 28, 21, 0.3) 0%, rgba(8, 28, 21, 0.75) 100%);
+    transition: background 0.3s ease;
+}
+
+.arrival-card-extended:hover .card-dark-overlay {
+    background: linear-gradient(180deg, rgba(8, 28, 21, 0.4) 0%, rgba(8, 28, 21, 0.85) 100%);
+}
+
+/* Explore Button */
+.btn-explore-emerald {
+    background-color: #081c15;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    transition: all 0.3s ease;
+}
+
+.btn-explore-emerald:hover {
+    background-color: #1b4332;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(8, 28, 21, 0.2);
+}
+
+/* Helper Classes */
+.border-gold-subtle {
+    border-color: rgba(212, 175, 55, 0.25) !important;
+}
+
+.text-xxs {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
 }
 
 
-
-/* Footer Section  */
+/* ================================
+        FOOTER SECTION
+   ================================ */
 
 .custom-footer {
     background-color: var(--color-brand-800, #081c15);

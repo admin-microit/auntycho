@@ -8,4 +8,119 @@ SOUVENIR
 ဟင်းခတ်အမွေးအကြိုင်
 အကြော်အလှော်
 အချဉ်ထုပ်
-အပူအအေး
+အပူအအေး အကြော် လက်ဖက်သုတ် ုြျုြအအအ့ ဆ အ-ြုြအ ိလငညလအငခည အငအြ အ့နင အ့ငအ အင့အ ်ိအင အ့က်သငိအ့ု
+<section class="jewelry-hero-bg py-4 py-md-5">
+        <div class="container">
+            <div class="row">
+                <!-- စာသားများ ပါဝင်သည့် ဘယ်ဘက်ခြမ်း (col-lg-7 သို့မဟုတ် col-md-8) -->
+                <div class="col-12 col-md-8 col-lg-7 text-start">
+
+                    <!-- Title -->
+                    <h2 class="banner-title fw-bold mb-2">
+                        <span class="text-dark-gold">ရွှေ၊ ငွေဖြင့် ပြုလုပ်ထားသော မြန်မာကျောက်မျက်ရတနာများ</span>
+                    </h2>
+
+                    <!-- Description -->
+                    <p class="banner-desc mb-3">
+                        မြန်မာနိုင်ငံ၏ သဘာဝကျောက်မျက်ရတနာများကို ရွှေနှင့် ၉၂၅ သန့်ငွေဖြင့် ထူးခြားလှပသော
+                        လက်ဝတ်ရတနာများ။ မိုးကုတ်ရတနာမြေမှ နာမည်ကြီး ရတနာများ
+                    </p>
+
+                    <!-- Brand & Guarantee Info -->
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="fa-solid fa-gem text-gold fs-6"></i>
+                            <span class="fw-bold text-white small">AUNTY CHO</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="fa-solid fa-circle-check text-success fs-6"></i>
+                            <span class="fw-semibold text-secondary small">✅ ၁၀၀% သဘာဝမြန်မာ့ကျောက်စစ်</span>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action Button -->
+                    <div>
+                        <a href="#"
+                            class="btn btn-warm-gold btn-sm px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                            ရတနာထည်များကို ဝယ်ယူရန်
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- .jewelry-hero-bg {
+    background-image: url('../Images/jewelry.jpg');
+    background-size: cover;
+    background-position: center right; /* ပုံကို ညာဘက်သို့ ပိုရောက်စေရန် */
+    background-repeat: no-repeat;
+    position: relative;
+    border-bottom: 1px solid var(--color-brand-700, #1b4332);
+}
+
+.jewelry-hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, 
+        rgba(8, 28, 21, 0.95) 0%,        /* --color-brand-800 opacity 95% */
+        rgba(27, 67, 50, 0.85) 45%,      /* --color-brand-700 opacity 85% */
+        rgba(252, 251, 247, 0.2) 100%    /* --color-cream opacity 20% */
+    );
+    z-index: 1;
+}
+
+.jewelry-hero-bg .container {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-myanmar, 'Pyidaungsu', sans-serif);
+}
+
+.banner-title {
+    font-size: 1.35rem;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+    .banner-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Gold Theme Text Classes */
+.text-dark-gold {
+    color: var(--color-gold-400, #e5c158);
+}
+
+.text-gold {
+    color: var(--color-gold-500, #d4af37);
+}
+
+/* ဖော်ပြချက် စာသား (Dark Theme မို့ စာသားအဖြူရောင်စပ် ထားပေးပါသည်) */
+.banner-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-brand-100, #e1eee6);
+}
+
+/* ရွှေရောင် ခလုတ် (Gold Button) */
+.btn-warm-gold {
+    background-color: var(--color-gold-400, #e5c158);
+    color: var(--color-brand-800, #081c15);
+    border: none;
+    border-radius: 50rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 3px 10px rgba(229, 193, 88, 0.3);
+}
+
+.btn-warm-gold:hover {
+    background-color: var(--color-gold-500, #d4af37);
+    color: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+} -->

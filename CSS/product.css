@@ -1,232 +1,239 @@
-/* Banner Main Container Style */
-.custom-home-banner {
-    background-color: var(--color-brand-800, #081c15);
-    position: relative;
+:root {
+    /* Brand Colors */
+    --color-brand-50: #f2f7f4;
+    --color-brand-100: #e1eee6;
+    --color-brand-600: #2d6a4f;
+    --color-brand-700: #1b4332;
+    --color-brand-800: #081c15;
+    --color-gold-400: #e5c158;
+    --color-gold-500: #d4af37;
+    --color-gold-600: #b89228;
+    --color-cream: #fcfbf7;
+    --font-sans: 'Plus Jakarta Sans', 'Pyidaungsu', sans-serif;
+    --font-myanmar: 'Pyidaungsu', sans-serif;
 }
 
-/* Background Pattern Overlay */
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-cream);
+    color: var(--color-brand-800);
+    
+}
+
+/* ==========================================================
+   ALL PRODUCTS BANNER STYLES
+   ========================================================== */
+
+.all-products-banner {
+    background-color: var(--color-brand-800, #081c15);
+}
+
+/* Background Dot Pattern */
 .banner-pattern-overlay {
-    position: absolute;
-    inset: 0;
     opacity: 0.25;
     background-image: radial-gradient(#d4af37 1px, transparent 1px);
     background-size: 16px 16px;
-    z-index: 1;
+    z-index: 0;
 }
 
 /* Gradient Overlay */
 .banner-gradient-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--color-brand-800, #081c15) 0%, rgba(8, 28, 21, 0.9) 50%, transparent 100%);
-    z-index: 1;
+    background: linear-gradient(90deg, var(--color-brand-800, #081c15) 0%, rgba(8, 28, 21, 0.9) 50%, transparent 100%);
 }
 
-/* Badge Style */
-.badge-custom {
-    display: inline-block;
-    padding: 0.35rem 0.85rem;
-    background-color: rgba(212, 175, 55, 0.2);
-    color: var(--color-gold-400, #e5c158);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 50rem;
+/* Utility Helpers */
+.position-absolute {
+    position: absolute !important;
+}
+
+.inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.text-stone-300 {
+    color: #d1d5db !important;
+}
+
+.text-xs {
     font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
 }
 
-/* Main Title Style */
-.banner-main-title {
-    font-size: 2rem;
-    line-height: 1.5;
+.form-select:focus {
+    border-color: var(--color-brand-600);
+    box-shadow: 0 0 0 0.25rem rgba(45, 106, 79, 0.15);
 }
 
-@media (min-width: 576px) {
-    .banner-main-title { font-size: 2.25rem; }
+/* Main section ကို relative သတ်မှတ်ပေးပါ (Sticky ရပ်တန့်မည့် နယ်သတ်မှတ်ရန်) */
+#products-section {
+    position: relative !important;
+}
+/* Sidebar နဲ့ Controls Bar တို့၏ ထိပ်ချင်း အတိအကျညီစေရန် */
+.row.align-items-start > aside {
+    margin-top: 0 !important;
 }
 
-@media (min-width: 992px) {
-    .banner-main-title { font-size: 2.75rem; }
+.row.align-items-start > section {
+    margin-top: 0 !important;
 }
 
-.text-gold-custom {
-    color: var(--color-gold-400, #e5c158);
-}
-
-/* Description Text */
-.banner-desc {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    max-width: 550px;
-}
-
-@media (min-width: 576px) {
-    .banner-desc { font-size: 1rem; }
-}
-
-/* Custom Gold Button */
-.btn-gold-custom {
-    background-color: var(--color-gold-500, #d4af37);
-    color: var(--color-brand-800, #081c15);
-    font-weight: bold;
-    padding: 0.65rem 1.5rem;
-    border-radius: 50rem;
+#categoryList button {
+    width: 100%;
+    text-align: left;
+    padding: 0.65rem 1rem;
     font-size: 0.875rem;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
-    transition: all 0.3s ease;
-}
-
-.btn-gold-custom:hover {
-    background-color: var(--color-gold-400, #e5c158);
-    color: var(--color-brand-800, #081c15);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.25);
-}
-
-/* Stat Box Layout (Grid) */
-.grid-cols-2 {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.stat-box {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    border-radius: 1rem;
-}
-
-.stat-number {
-    font-size: 1.5rem;
-}
-
-.stat-text {
-    font-size: 0.75rem;
-    color: #d6d3d1;
-}
-
-/* Sidebar & Card Border Styling */
-.border-stone-200 {
-    border-color: #e5e7eb !important;
-}
-
-.bg-brand-50 {
-    background-color: var(--color-brand-50, #f2f7f4) !important;
-}
-
-.bg-brand-100 {
-    border-color: var(--color-brand-100, #e1eee6) !important;
-}
-
-.text-brand-600 {
-    color: var(--color-brand-600, #2d6a4f) !important;
-}
-
-.text-brand-800 {
-    color: var(--color-brand-800, #081c15) !important;
-}
-
-.btn-brand-700 {
-    background-color: var(--color-brand-700, #1b4332);
+    border-radius: 0.75rem;
+    transition: all 0.25s ease;
     border: none;
-    transition: background-color 0.2s ease;
+    background: transparent;
+    color: #4b5563;
+    font-family: var(--font-myanmar);
 }
 
-.btn-brand-700:hover {
-    background-color: var(--color-brand-800, #081c15);
-    color: #ffffff;
-}
-
-.bg-gold-subtle {
-    background-color: rgba(229, 193, 88, 0.15);
-}
-
-.text-gold-dark {
-    color: var(--color-gold-600, #b89228);
-}
-
-.hover-brand:hover {
+#categoryList button:hover {
+    background-color: var(--color-brand-50, #f2f7f4);
     color: var(--color-brand-700, #1b4332);
 }
 
-/* Mobile Drawer Overlay Background */
-.custom-drawer-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1050;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+#categoryList button.active-cat {
+    background-color: var(--color-brand-700, #1b4332) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(27, 67, 50, 0.15);
 }
 
-.custom-drawer-overlay.active {
-    display: block;
-    opacity: 1;
+/* ==========================================================
+   CATEGORY ITEM STYLES (SIDEBAR & MOBILE DRAWER)
+   ========================================================== */
+
+#categoryList button,
+#customCategoryList button {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+    border: 1px solid transparent !important;
+    transition: all 0.25s ease-in-out !important;
+    background-color: transparent !important;
+    border-radius: 0.75rem !important; /* rounded-xl ကဲ့သို့ ညက်ညောစေရန် */
+    padding: 0.75rem 1rem !important; /* အနေတော် အထူအပါးနှင့် Padding ပေးခြင်း */
+    margin-bottom: 0.35rem !important; /* တစ်ခုနဲ့ တစ်ခု အကွာအဝေး */
+    font-size: 0.9rem !important;
 }
 
-/* Drawer Content Panel */
-.custom-drawer-content {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    max-width: 320px;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    padding: 1.5rem;
+/* Hover လုပ်တဲ့အခါ ပေါ်လာမည့် Style */
+#categoryList button:hover:not(.fw-semibold):not(.text-white),
+#customCategoryList button:hover:not(.fw-semibold):not(.text-white) {
+    background-color: var(--color-brand-50, #f2f7f4) !important;
+    color: var(--color-brand-700, #1b4332) !important;
+    border-color: var(--color-brand-100, #d8e5de) !important;
+    transform: translateX(4px); /* ဘယ်ကနေ ညာဘက်သို့ အနည်းငယ် ရွေ့မည့် Animation */
+}
+
+/* Active ဖြစ်နေစဉ် (ရွေးချယ်ထားသော Category) အတွက် Style */
+#categoryList button.fw-semibold,
+#categoryList button.text-white,
+#customCategoryList button.fw-semibold,
+#customCategoryList button.text-white {
+    background-color: var(--color-brand-700, #1b4332) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(27, 67, 50, 0.2) !important;
+    border-color: var(--color-brand-700, #1b4332) !important;
+    transform: none !important;
+}
+
+/* Active ဖြစ်နေစဉ် အထဲက Icon လေးအတွက် spacing */
+#categoryList button i,
+#customCategoryList button i {
+    font-size: 0.75rem;
+    opacity: 0.85;
+}
+
+
+
+/* ==========================================================
+   PRODUCT CARD HOVER EFFECTS
+   ========================================================== */
+
+/* Card တစ်ခုလုံးအတွက် Transition နဲ့ Shadow သတ်မှတ်ခြင်း */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Mouse တင်လိုက်ချိန် (Hover) တွင် Card က အပေါ်သို့ အနည်းငယ်တက်ပြီး Shadow ပိုထင်လာမည် */
+.card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 1rem 2rem rgba(8, 28, 21, 0.1) !important;
+    border-color: var(--color-brand-600, #2d6a4f) !important;
+}
+
+/* Card ထဲရှိ ပုံ (Image) အတွက် Zoom In Effect */
+.card .overflow-hidden img {
+    transition: transform 0.5s ease !important;
+}
+
+.card:hover .overflow-hidden img {
+    transform: scale(1.08) !important;
+}
+
+
+/* ==========================================================
+   PAGINATION STYLES
+   ========================================================== */
+
+#pagination {
+    margin-top: 2.5rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: auto;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.custom-drawer-overlay.active .custom-drawer-content {
-    transform: translateX(0);
-}
-
-/* Cart Drawer Overlay (Right Side Slide-in) */
-.custom-cart-drawer-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1050;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.custom-cart-drawer-overlay.active {
-    display: block;
-    opacity: 1;
-}
-
-/* Cart Drawer Content Panel (Right Side) */
-.custom-cart-drawer-content {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    max-width: 420px;
-    width: 100%;
+#pagination button {
+    width: 36px;
+    height: 36px;
+    border-radius: 0.75rem; /* rounded-xl */
+    border: 1px solid var(--color-brand-100, #e1eee6);
     background-color: #ffffff;
-    box-shadow: -10px 0 25px rgba(0, 0, 0, 0.1);
+    color: #4b5563; /* stone-600 */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
-.custom-cart-drawer-overlay.active .custom-cart-drawer-content {
-    transform: translateX(0);
+#pagination button:hover:not(:disabled) {
+    background-color: var(--color-brand-50, #f2f7f4);
+    color: var(--color-brand-700, #1b4332);
+    border-color: var(--color-brand-200, #c8e1d3);
+}
+
+/* Active Page Button Style */
+#pagination button.active-page,
+#pagination button.bg-brand-700 {
+    background-color: var(--color-brand-700, #1b4332) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    border-color: var(--color-brand-700, #1b4332) !important;
+    box-shadow: 0 2px 6px rgba(27, 67, 50, 0.2);
+}
+
+/* Disabled Button Style */
+#pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Dots Span Style */
+#pagination span {
+    color: #9ca3af; /* stone-400 */
+    font-size: 0.75rem;
+    padding: 0 0.25rem;
 }
 
