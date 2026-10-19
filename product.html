@@ -74,9 +74,10 @@
                     </button>
 
                     <!-- User Account Icon -->
-                    <button class="custom-icon-btn">
+                    <a href="login.html"
+                        class="custom-icon-btn text-decoration-none d-inline-flex align-items-center justify-content-center">
                         <i class="fa-regular fa-user" style="font-size: 1.25rem;"></i>
-                    </button>
+                    </a>
 
                     <!-- Mobile Sidebar Toggle -->
                     <button id="mobileMenuBtn" class="custom-mobile-toggle">
@@ -96,33 +97,45 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu / Filter Drawer (မူလအစမှာ ပုန်းနေပါမယ်) -->
-    <div id="mobileFilterDrawer" class="custom-drawer-overlay">
-        <div class="custom-drawer-content">
+    <div id="customMobileDrawer" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
+        style="z-index: 1055; backdrop-filter: blur(4px);">
+        <div class="position-fixed top-0 start-0 bottom-0 bg-white shadow-lg p-4 d-flex flex-column justify-content-between overflow-y-auto"
+            style="max-width: 320px; width: 100%;">
             <div>
-                <!-- Header with Title & Close Button -->
-                <div class="custom-drawer-header">
-                    <h3 class="custom-drawer-title">Menu</h3>
-                    <button id="closeMobileFilterBtn" class="custom-close-btn">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
+                <!-- Header -->
+                <div class="d-flex align-items-center justify-content-between pb-3 border-bottom border-light mb-3">
+                    <h3 class="fw-bold text-dark fs-5 mb-0" style="font-family: var(--font-sans);">Main Menu</h3>
+                    <button id="closeMenuDrawerBtn" class="btn-close" aria-label="Close"></button>
                 </div>
 
-                <!-- Navigation Links List -->
-                <nav class="custom-category-list" id="mobileCategoryList">
-                    <a href="#" class="custom-cat-item"><i class="fa-solid fa-house me-2"></i> Home</a>
-                    <a href="#" class="custom-cat-item"><i class="fa-solid fa-store me-2"></i> Shop / Products</a>
-                    <a href="#" class="custom-cat-item"><i class="fa-solid fa-circle-info me-2"></i> About Us</a>
-                    <a href="#" class="custom-cat-item"><i class="fa-solid fa-phone me-2"></i> Contact</a>
+                <!-- Navigation Links -->
+                <!-- Navigation Links (mb-2.5 ဖြင့် အကွာအဝေး ပိုလှပသွားမည်) -->
+                <nav class="nav flex-column">
+                    <a href="index.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm mb-3">
+                        <i class="fa-solid fa-house text-success"></i> Home
+                    </a>
+                    <a href="product.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm mb-3">
+                        <i class="fa-solid fa-store text-success"></i> Shop / Products
+                    </a>
+                    <a href="about.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm mb-3">
+                        <i class="fa-solid fa-circle-info text-success"></i> About Us
+                    </a>
+                    <a href="contact.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm">
+                        <i class="fa-solid fa-phone text-success"></i> Contact
+                    </a>
                 </nav>
+
             </div>
 
-            <!-- Footer / Additional Action (သို့မဟုတ် အောက်ခြေတွင် ဆက်သွယ်ရန် ဖုန်းနံပါတ်ထည့်ရန်) -->
-            <div class="custom-drawer-footer">
-                <a href="tel:3472601419" class="custom-apply-btn text-center"
-                    style="display: block; text-decoration: none;">
-                    <i class="fa-solid fa-phone-volume me-2"></i> Hotline: 3472601419
-                </a>
+            <div class="pt-3 border-top border-light mt-3">
+                <button id="closeMenuBtn" class="btn w-100 text-white fw-bold py-2.5 rounded-3 shadow-sm text-sm"
+                    style="background-color: var(--color-brand-700, #1b4332);">
+                    ပိတ်မည်
+                </button>
             </div>
         </div>
     </div>
@@ -280,23 +293,27 @@
         </div>
     </main>
 
-    <!-- ID အသစ်ဖြင့် ပြောင်းလဲထားသော Mobile Filter Drawer -->
-    <div id="customMobileDrawer" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
+    <!-- 2. Categories Drawer (All Product, Jewelery စသည်တို့အတွက်) -->
+    <div id="mobilecategory" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
         style="z-index: 1055; backdrop-filter: blur(4px);">
         <div class="position-fixed top-0 start-0 bottom-0 bg-white shadow-lg p-4 d-flex flex-column justify-content-between overflow-y-auto"
             style="max-width: 320px; width: 100%;">
             <div>
+                <!-- Header -->
                 <div class="d-flex align-items-center justify-content-between pb-3 border-bottom border-light mb-3">
                     <h3 class="fw-bold text-dark fs-5 mb-0" style="font-family: var(--font-sans);">Categories</h3>
-                    <button id="customCloseBtn" class="btn-close" aria-label="Close"></button>
+                    <button id="closeCategoryDrawerBtn" class="btn-close" aria-label="Close"></button>
                 </div>
-                <nav class="nav flex-column gap-1 mt-3" id="customCategoryList">
 
+                <!-- Categories List -->
+                <nav class="nav flex-column gap-1 mt-3" id="mboileCategoryList">
+                    <!-- JavaScript ဖြင့် Categories များ ဝင်ရောက်မည်[cite: 2] -->
                 </nav>
             </div>
-            <div class="pt-3 border-top border-light">
-                <button id="customApplyBtn" class="btn w-100 text-white fw-bold py-2.5 rounded-3 shadow-sm text-sm"
-                    style="background-color: var(--color-brand-700);">
+
+            <div class="pt-3 border-top border-light mt-3">
+                <button id="applyCategoryBtn" class="btn w-100 text-white fw-bold py-2.5 rounded-3 shadow-sm text-sm"
+                    style="background-color: var(--color-brand-700, #1b4332);">
                     ကြည့်ရှုမည်
                 </button>
             </div>
@@ -384,82 +401,22 @@
     </footer>
 
     <script>
-        // Sample Product Data (Matching original site items & categories)
+        // Sample Product Data & Categories
         const products = [
-            {
-                id: 1,
-                name: "ငါးပိစပ်စုံခြောက်ဆီသပ်",
-                category: "ငါးပိစပ်စုံခြောက်ဆီသပ်",
-                price: 5.99,
-                inStock: true,
-                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
-                description: "သန့်ရှင်းလတ်ဆတ်စွာ စီမံထားသော ရိုးရာငါးပိစပ်"
-            },
-            {
-                id: 2,
-                name: "စွယ်စုံဆီစဥ် small bottle",
-                category: "အရည်စုံ အမျိုးစုံ",
-                price: 18.00,
-                inStock: false,
-                image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80",
-                description: "သဘာဝဆေးဘက်ဝင် စွယ်စုံဆီစဥ်"
-            },
-            {
-                id: 3,
-                name: "သကြားကျောက်စား",
-                category: "မုန့်လုပ်မုန့်-သပိတ်မှောက်မုန့်",
-                price: 5.00,
-                inStock: true,
-                image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80",
-                description: "သဘာဝသကြားကျောက် အချိုပွဲ"
-            },
-            {
-                id: 4,
-                name: "မလေးရှား မျက်ကွက် ပင်လယ် ဆေး",
-                category: "မြန်မာ့တိုင်းရင်းဆေး",
-                price: 5.99,
-                inStock: true,
-                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
-                description: "မျက်ကွက် ပင်လယ် အကြောပြေဆေး"
-            },
-            {
-                id: 5,
-                name: "ပင်လယ်ငါး",
-                category: "SOUVENIR",
-                price: 5.00,
-                inStock: true,
-                image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
-                description: "ပင်လယ်ငါးခြောက် အသားအပြည့်"
-            },
-            {
-                id: 6,
-                name: "သမ္မုဒ္ဓိအကြော်",
-                category: "အကြော်စုံ",
-                price: 14.99,
-                inStock: true,
-                image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-                description: "မွှေးကြိုင်လှိုင်သော သမ္မုဒ္ဓိအကြော်စုံ"
-            },
-
-
+            { id: 1, name: "ငါးပိစပ်စုံခြောက်ဆီသပ်", category: "ငါးပိစပ်စုံခြောက်ဆီသပ်", price: 5.99, inStock: true, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80", description: "သန့်ရှင်းလတ်ဆတ်စွာ စီမံထားသော ရိုးရာငါးပိစပ်" },
+            { id: 2, name: "စွယ်စုံဆီစဥ် small bottle", category: "အရည်စုံ အမျိုးစုံ", price: 18.00, inStock: false, image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80", description: "သဘာဝဆေးဘက်ဝင် စွယ်စုံဆီစဥ်" },
+            { id: 3, name: "သကြားကျောက်စား", category: "မုန့်လုပ်မုန့်-သပိတ်မှောက်မုန့်", price: 5.00, inStock: true, image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80", description: "သဘာဝသကြားကျောက် အချိုပွဲ" },
+            { id: 4, name: "မလေးရှား မျက်ကွက် ပင်လယ် ဆေး", category: "မြန်မာ့တိုင်းရင်းဆေး", price: 5.99, inStock: true, image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80", description: "မျက်ကွက် ပင်လယ် အကြောပြေဆေး" },
+            { id: 5, name: "ပင်လယ်ငါး", category: "SOUVENIR", price: 5.00, inStock: true, image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80", description: "ပင်လယ်ငါးခြောက် အသားအပြည့်" },
+            { id: 6, name: "သမ္မုဒ္ဓိအကြော်", category: "အကြော်စုံ", price: 14.99, inStock: true, image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80", description: "မွှေးကြိုင်လှိုင်သော သမ္မုဒ္ဓိအကြော်စုံ" },
         ];
 
-        // Categories List
         const categories = [
-            "All Product",
-            "Jewelery",
-            "SOUVENIR",
-            "ငါးပိရည်နဲ့တို့စရာ",
-            "ပုဇွန်ခြောက်/ငါးခြောက်/အမဲခြောက်",
-            "မြန်မာ့တိုင်းရင်းဆေး",
-            "မုန်ဟင်းခါး- အုန်နိခေါက်ဆွဲ",
-            "လက်ဖက်",
-            "အကြော်အလှော်",
-            "အချဉ်ထုပ်",
-            "အပူအအေး"
+            "All Product", "Jewelery", "SOUVENIR", "ငါးပိရည်နဲ့တို့စရာ",
+            "ပုဇွန်ခြောက်/ငါးခြောက်/အမဲခြောက်", "မြန်မာ့တိုင်းရင်းဆေး",
+            "မုန်ဟင်းခါး- အုန်နိခေါက်ဆွဲ", "လက်ဖက်", "အကြော်အလှော်", "အချဉ်ထုပ်", "အပူအအေး"
         ];
 
-        // State Management
         let cart = [];
         let selectedCategory = "All Product";
         let searchQuery = "";
@@ -468,9 +425,9 @@
         // DOM Elements
         const productGrid = document.getElementById('productGrid');
         const productCount = document.getElementById('productCount');
-        const categoryList = document.getElementById('categoryList');
+        const categoryList = document.getElementById('categoryList'); // Desktop Sidebar
+        const mboileCategoryList = document.getElementById('mboileCategoryList'); // Mobile Categories Drawer List[cite: 2]
         const searchInput = document.getElementById('searchInput');
-        const mobileSearchInput = document.getElementById('mobileSearchInput');
         const sortSelect = document.getElementById('sortSelect');
         const cartCountBadge = document.getElementById('cartCountBadge');
         const cartDrawer = document.getElementById('cartDrawer');
@@ -480,130 +437,108 @@
         const emptyState = document.getElementById('emptyState');
         const activeCategoryBadge = document.getElementById('activeCategoryBadge');
         const resetCategoryBtn = document.getElementById('resetCategoryBtn');
-        const customDrawer = document.getElementById('customMobileDrawer');
-        const customCategoryList = document.getElementById('customCategoryList');
-        const mobileFilterBtn = document.getElementById('mobileFilterBtn'); // Header ထဲက Filter ဖွင့်သည့် ခလုတ်
-        const customCloseBtn = document.getElementById('customCloseBtn');
-        const customApplyBtn = document.getElementById('customApplyBtn');
 
+        // Drawer Elements & Toggle Buttons
+        const customMobileDrawer = document.getElementById('customMobileDrawer'); // Menu Drawer
+        const mobilecategory = document.getElementById('mobilecategory'); // Categories Drawer[cite: 2]
 
-        // Drawer ဖွင့်ခြင်း/ပိတ်ခြင်း Function
-        function toggleCustomDrawer(open) {
-            if (!customDrawer) return;
-            if (open) {
-                customDrawer.classList.remove('d-none');
-            } else {
-                customDrawer.classList.add('d-none');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn'); // Menu ဖွင့်မည့် ခလုတ်
+        const mobileFilterBtn = document.getElementById('mobileFilterBtn') || document.getElementById('mobileFilterToggle'); // Categories ဖွင့်မည့် ခလုတ်
+
+        // 1. Menu Drawer Controls
+        function toggleMenuDrawer(open) {
+            if (customMobileDrawer) {
+                customMobileDrawer.classList.toggle('d-none', !open);
             }
         }
 
-        // Mobile Categories များကို render လုပ်သည့်အခါ customCategoryList သို့ ထည့်သွင်းရန် 
-        // (renderCategories() ထဲတွင် အသုံးပြုရန်)
-        function renderMobileCategoriesWithNewID() {
-            if (!customCategoryList) return;
-            customCategoryList.innerHTML = '';
-
-            categories.forEach(cat => {
-                const isActive = cat === selectedCategory;
-                const btn = document.createElement('button');
-                btn.className = `w-100 text-start px-3.5 py-2.5 rounded-3 text-xs sm:text-sm fw-medium d-flex align-items-center justify-content-between ${isActive ? 'text-white shadow-sm fw-semibold' : 'text-secondary'
-                    }`;
-
-                if (isActive) {
-                    btn.style.backgroundColor = 'var(--color-brand-700, #1b4332)';
-                } else {
-                    btn.style.backgroundColor = 'transparent';
-                    btn.style.color = '#4b5563';
-                }
-
-                btn.innerHTML = `
-            <span>${cat}</span>
-            ${isActive ? '<i class="fa-solid fa-chevron-right small"></i>' : ''}
-        `;
-
-                btn.addEventListener('click', () => {
-                    selectCategory(cat);
-                    toggleCustomDrawer(false); // Category ရွေးလိုက်ပါက Drawer ပိတ်မည်
-                });
-
-                customCategoryList.appendChild(btn);
-            });
+        // 2. Categories Drawer Controls
+        function toggleCategoryDrawer(open) {
+            if (mobilecategory) {
+                mobilecategory.classList.toggle('d-none', !open);
+            }
         }
 
-        // Event Listeners များ ချိတ်ဆက်ခြင်း
         document.addEventListener('DOMContentLoaded', () => {
-            // ဖွင့်ရန် ခလုတ်
+            // Mobile Menu Button Click
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMenuDrawer(true);
+                });
+            }
+
+            // Mobile Categories/Filter Button Click
             if (mobileFilterBtn) {
-                mobileFilterBtn.addEventListener('click', () => toggleCustomDrawer(true));
-            }
-
-            // ပိတ်ရန် X ခလုတ်
-            if (customCloseBtn) {
-                customCloseBtn.addEventListener('click', () => toggleCustomDrawer(false));
-            }
-
-            // ကြည့်ရှုမည် ခလုတ်
-            if (customApplyBtn) {
-                customApplyBtn.addEventListener('click', () => toggleCustomDrawer(false));
-            }
-
-            // နောက်ခံ အမည်းရောင်ကို နှိပ်ပါက ပိတ်ရန်
-            if (customDrawer) {
-                customDrawer.addEventListener('click', (e) => {
-                    if (e.target === customDrawer) {
-                        toggleCustomDrawer(false);
-                    }
+                mobileFilterBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleCategoryDrawer(true);
                 });
             }
-        });
 
-        document.addEventListener('DOMContentLoaded', () => {
+            // Close Buttons
+            document.getElementById('closeMenuDrawerBtn')?.addEventListener('click', () => toggleMenuDrawer(false));
+            document.getElementById('closeMenuBtn')?.addEventListener('click', () => toggleMenuDrawer(false));
+
+            document.getElementById('closeCategoryDrawerBtn')?.addEventListener('click', () => toggleCategoryDrawer(false));
+            document.getElementById('applyCategoryBtn')?.addEventListener('click', () => toggleCategoryDrawer(false));
+
+            // Backdrop Clicks
+            customMobileDrawer?.addEventListener('click', (e) => {
+                if (e.target === customMobileDrawer) toggleMenuDrawer(false);
+            });
+            mobilecategory?.addEventListener('click', (e) => {
+                if (e.target === mobilecategory) toggleCategoryDrawer(false);
+            });
+
             renderCategories();
-            renderMobileCategoriesWithNewID(); // <- ဒီနေရာမှာ ထည့်ပေးပါ
             renderProducts();
             setupEventListeners();
         });
 
-        // Render Categories in Sidebar
+        // Render Categories
         function renderCategories() {
-            if (!categoryList) return;
-            categoryList.innerHTML = '';
-            if (mobileCategoryList) mobileCategoryList.innerHTML = '';
+            // Desktop Sidebar
+            if (categoryList) {
+                categoryList.innerHTML = '';
+                categories.forEach(cat => {
+                    const isActive = cat === selectedCategory;
+                    const btn = document.createElement('button');
+                    btn.className = `w-full text-start px-3.5 py-2.5 rounded-xl text-xs sm:text-sm transition-all d-flex align-items-center justify-content-between fw-medium ${isActive ? 'text-white shadow-sm fw-semibold' : 'text-secondary'}`;
+                    btn.style.backgroundColor = isActive ? 'var(--color-brand-700, #1b4332)' : 'transparent';
+                    btn.style.color = isActive ? '#ffffff' : '#4b5563';
+                    btn.innerHTML = `<span>${cat}</span> ${isActive ? '<i class="fa-solid fa-chevron-right small"></i>' : ''}`;
+                    btn.addEventListener('click', () => selectCategory(cat));
+                    categoryList.appendChild(btn);
+                });
+            }
 
-            categories.forEach(cat => {
-                const isActive = cat === selectedCategory;
+            // Mobile Categories Drawer List (`id="mboileCategoryList"`)
+            if (mboileCategoryList) {
+                mboileCategoryList.innerHTML = '';
+                categories.forEach(cat => {
+                    const isActive = cat === selectedCategory;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    // ဒီနေရာမှာ mb-2 (သို့မဟုတ် mb-2.5) ထည့်သွင်းပြီး အောက်ဘက်ကို ကွာဟစေပါသည်
+                    btn.className = `w-100 text-start px-3.5 py-3 rounded-3 mb-2 text-xs sm:text-sm fw-medium d-flex align-items-center justify-content-between border-0 shadow-sm ${isActive ? 'text-white fw-semibold' : 'text-secondary bg-light'}`;
 
-                // Desktop Item
-                const btn = document.createElement('button');
-                btn.className = `w-full text-start px-3.5 py-2.5 rounded-xl text-xs sm:text-sm transition-all d-flex align-items-center justify-content-between fw-medium ${isActive
-                    ? 'text-white shadow-sm fw-semibold'
-                    : 'text-secondary hover-bg-light'
-                    }`;
-                if (isActive) {
-                    btn.style.backgroundColor = 'var(--color-brand-700)';
-                } else {
-                    btn.style.color = '#4b5563';
-                }
+                    btn.style.backgroundColor = isActive ? 'var(--color-brand-700, #1b4332)' : '#f8f9fa';
+                    btn.style.color = isActive ? '#ffffff' : '#4b5563';
 
-                btn.innerHTML = `
-                    <span>${cat}</span>
-                    ${isActive ? '<i class="fa-solid fa-chevron-right small"></i>' : ''}
-                `;
-                btn.addEventListener('click', () => selectCategory(cat));
-                categoryList.appendChild(btn);
+                    btn.innerHTML = `<span>${cat}</span> ${isActive ? '<i class="fa-solid fa-chevron-right small"></i>' : ''}`;
 
-                // Mobile Item
-                if (mobileCategoryList) {
-                    const mBtn = btn.cloneNode(true);
-                    mBtn.addEventListener('click', () => {
+                    btn.addEventListener('click', () => {
                         selectCategory(cat);
-                        toggleMobileFilter(false);
+                        toggleCategoryDrawer(false); // ရွေးပြီးတာနဲ့ Drawer ပိတ်မည်
                     });
-                    mobileCategoryList.appendChild(mBtn);
-                }
-            });
 
-            // Update badge in toolbar
+                    mboileCategoryList.appendChild(btn);
+                });
+            }
+
+
+            // Badge Update
             if (selectedCategory !== "All Product") {
                 if (activeCategoryBadge) {
                     activeCategoryBadge.textContent = selectedCategory;
@@ -622,7 +557,6 @@
             renderProducts();
         }
 
-        // Filter and Sort Products
         function getFilteredProducts() {
             return products.filter(p => {
                 const matchesCategory = selectedCategory === "All Product" || p.category === selectedCategory;
@@ -633,7 +567,7 @@
                 if (sortBy === 'price-low') return a.price - b.price;
                 if (sortBy === 'price-high') return b.price - a.price;
                 if (sortBy === 'name') return a.name.localeCompare(b.name, 'my');
-                return a.id - b.id; // Popularity default
+                return a.id - b.id;
             });
         }
 
@@ -653,60 +587,28 @@
             list.forEach(product => {
                 const col = document.createElement('div');
                 col.className = "col-12 col-sm-6 col-xl-4";
-
                 col.innerHTML = `
-                    <div class="card h-100 border border-stone-200 rounded-4 shadow-sm overflow-hidden position-relative product-card-item">
-                        <!-- Image Container -->
-                        <div class="position-relative w-100 bg-light overflow-hidden" style="height: 200px;">
-                            <img src="${product.image}" alt="${product.name}" 
-                                 class="w-100 h-100 object-fit-cover product-img ${!product.inStock ? 'filter-grayscale opacity-75' : ''}">
-                            
-                            ${!product.inStock ? `
-                                <div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center">
-                                    <span class="badge bg-danger text-white text-xs px-3 py-2 rounded-pill uppercase tracking-wider">
-                                        Out of Stock
-                                    </span>
-                                </div>
-                            ` : ''}
-
-                            <span class="position-absolute top-0 end-0 m-3 bg-white bg-opacity-90 text-dark text-xs fw-semibold px-2.5 py-1 rounded-pill shadow-sm">
-                                ${product.category}
-                            </span>
+                <div class="card h-100 border border-stone-200 rounded-4 shadow-sm overflow-hidden position-relative product-card-item">
+                    <div class="position-relative w-100 bg-light overflow-hidden" style="height: 200px;">
+                        <img src="${product.image}" alt="${product.name}" class="w-100 h-100 object-fit-cover product-img ${!product.inStock ? 'filter-grayscale opacity-75' : ''}">
+                        ${!product.inStock ? `<div class="position-absolute inset-0 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center"><span class="badge bg-danger text-white text-xs px-3 py-2 rounded-pill uppercase tracking-wider">Out of Stock</span></div>` : ''}
+                        <span class="position-absolute top-0 end-0 m-3 bg-white bg-opacity-90 text-dark text-xs fw-semibold px-2.5 py-1 rounded-pill shadow-sm">${product.category}</span>
+                    </div>
+                    <div class="card-body p-4 d-flex flex-column justify-content-between gap-3">
+                        <div>
+                            <h3 class="fw-bold text-dark fs-6 text-truncate mb-1">${product.name}</h3>
+                            <p class="text-xs text-muted mb-0 line-clamp-2" style="line-height: 1.6;">${product.description}</p>
                         </div>
-
-                        <!-- Card Body -->
-                        <div class="card-body p-4 d-flex flex-column justify-content-between gap-3">
+                        <div class="pt-3 border-top border-light d-flex align-items-center justify-content-between gap-2">
                             <div>
-                                <h3 class="fw-bold text-dark fs-6 text-truncate mb-1" style="font-family: var(--font-sans);">
-                                    ${product.name}
-                                </h3>
-                                <p class="text-xs text-muted mb-0 line-clamp-2" style="font-family: var(--font-myanmar); line-height: 1.6;">
-                                    ${product.description}
-                                </p>
+                                <span class="text-xs text-muted d-block">ဈေးနှုန်း</span>
+                                <span class="fs-6 fw-bold" style="color: var(--color-brand-700, #1b4332);">$${product.price.toFixed(2)}</span>
                             </div>
-
-                            <!-- Price and Action Area -->
-                            <div class="pt-3 border-top border-light d-flex align-items-center justify-content-between gap-2">
-                                <div>
-                                    <span class="text-xs text-muted d-block" style="font-family: var(--font-myanmar);">ဈေးနှုန်း</span>
-                                    <span class="fs-6 fw-bold" style="color: var(--color-brand-700);">$${product.price.toFixed(2)}</span>
-                                </div>
-
-                                ${product.inStock ? `
-                                    <button onclick="addToCart(${product.id})" class="btn btn-sm text-xs fw-bold px-3 py-2 rounded-3 text-white shadow-sm d-flex align-items-center gap-2" style="background-color: var(--color-brand-700);">
-                                        <i class="fa-solid fa-cart-plus"></i>
-                                        <span>Shop Now</span>
-                                    </button>
-                                ` : `
-                                    <button disabled class="btn btn-sm btn-secondary text-xs fw-bold px-3 py-2 rounded-3 disabled">
-                                        ပစ္စည်းကုန်ပါသည်
-                                    </button>
-                                `}
-                            </div>
+                            ${product.inStock ? `<button onclick="addToCart(${product.id})" class="btn btn-sm text-xs fw-bold px-3 py-2 rounded-3 text-white shadow-sm d-flex align-items-center gap-2" style="background-color: var(--color-brand-700, #1b4332);"><i class="fa-solid fa-cart-plus"></i><span>Shop Now</span></button>` : `<button disabled class="btn btn-sm btn-secondary text-xs fw-bold px-3 py-2 rounded-3 disabled">ပစ္စည်းကုန်ပါသည်</button>`}
                         </div>
                     </div>
-                `;
-
+                </div>
+            `;
                 productGrid.appendChild(col);
             });
         }
@@ -714,14 +616,12 @@
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product || !product.inStock) return;
-
             const existingItem = cart.find(item => item.id === productId);
             if (existingItem) {
                 existingItem.qty += 1;
             } else {
                 cart.push({ ...product, qty: 1 });
             }
-
             updateCartUI();
             toggleCartDrawer(true);
         }
@@ -746,41 +646,31 @@
             if (!cartCountBadge) return;
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             cartCountBadge.textContent = totalItems;
-
             if (cartItemsContainer) cartItemsContainer.innerHTML = '';
-
             if (cart.length === 0) {
                 if (cartItemsContainer) {
-                    cartItemsContainer.innerHTML = `
-                        <div class="text-center py-5 text-muted">
-                            <i class="fa-solid fa-basket-shopping fs-2 mb-2 opacity-50"></i>
-                            <p class="small mb-0" style="font-family: var(--font-myanmar);">ခြင်းတောင်းထဲတွင် ပစ္စည်းမရှိသေးပါ</p>
-                        </div>
-                    `;
+                    cartItemsContainer.innerHTML = `<div class="text-center py-5 text-muted"><i class="fa-solid fa-basket-shopping fs-2 mb-2 opacity-50"></i><p class="small mb-0">ခြင်းတောင်းထဲတွင် ပစ္စည်းမရှိသေးပါ</p></div>`;
                 }
             } else {
                 cart.forEach(item => {
                     const row = document.createElement('div');
                     row.className = 'd-flex align-items-center gap-3 p-3 bg-light rounded-3 border border-light';
                     row.innerHTML = `
-                        <img src="${item.image}" class="rounded-2 object-fit-cover" style="width: 50px; height: 50px;">
-                        <div class="flex-grow-1 min-w-0">
-                            <h4 class="fw-bold text-dark text-xs text-truncate mb-1">${item.name}</h4>
-                            <p class="text-xs fw-bold mb-1" style="color: var(--color-brand-700);">$${(item.price * item.qty).toFixed(2)}</p>
-                            <div class="d-flex align-items-center gap-2">
-                                <button onclick="updateQuantity(${item.id}, -1)" class="btn btn-sm btn-outline-secondary py-0 px-1 text-xs">-</button>
-                                <span class="text-xs fw-bold">${item.qty}</span>
-                                <button onclick="updateQuantity(${item.id}, 1)" class="btn btn-sm btn-outline-secondary py-0 px-1 text-xs">+</button>
-                            </div>
+                    <img src="${item.image}" class="rounded-2 object-fit-cover" style="width: 50px; height: 50px;">
+                    <div class="flex-grow-1 min-w-0">
+                        <h4 class="fw-bold text-dark text-xs text-truncate mb-1">${item.name}</h4>
+                        <p class="text-xs fw-bold mb-1" style="color: var(--color-brand-700, #1b4332);">$${(item.price * item.qty).toFixed(2)}</p>
+                        <div class="d-flex align-items-center gap-2">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="btn btn-sm btn-outline-secondary py-0 px-1 text-xs">-</button>
+                            <span class="text-xs fw-bold">${item.qty}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="btn btn-sm btn-outline-secondary py-0 px-1 text-xs">+</button>
                         </div>
-                        <button onclick="removeFromCart(${item.id})" class="text-muted hover-text-danger btn btn-sm p-1">
-                            <i class="fa-solid fa-trash-can text-xs"></i>
-                        </button>
-                    `;
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-muted hover-text-danger btn btn-sm p-1"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                `;
                     cartItemsContainer.appendChild(row);
                 });
             }
-
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             if (cartTotalItems) cartTotalItems.textContent = `${totalItems} ခု`;
             if (cartTotalPrice) cartTotalPrice.textContent = `$${totalPrice.toFixed(2)}`;
@@ -795,16 +685,6 @@
             }
         }
 
-        function toggleMobileFilter(open) {
-            const drawer = document.getElementById('mobileFilterDrawer');
-            if (!drawer) return;
-            if (open) {
-                drawer.classList.remove('d-none');
-            } else {
-                drawer.classList.add('d-none');
-            }
-        }
-
         function setupEventListeners() {
             if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
@@ -812,21 +692,19 @@
                     renderProducts();
                 });
             }
-
             if (sortSelect) {
                 sortSelect.addEventListener('change', (e) => {
                     sortBy = e.target.value;
                     renderProducts();
                 });
             }
-
             if (resetCategoryBtn) {
                 resetCategoryBtn.addEventListener('click', () => selectCategory("All Product"));
             }
         }
-
-
     </script>
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
