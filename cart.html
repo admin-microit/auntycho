@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Aunty Cho</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Css  -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        :root {
+            --color-brand-50: #f2f7f4;
+            --color-brand-100: #e1eee6;
+            --color-brand-600: #2d6a4f;
+            --color-brand-700: #1b4332;
+            --color-brand-800: #081c15;
+            --color-gold-400: #e5c158;
+            --color-gold-500: #d4af37;
+            --color-gold-600: #b89228;
+            --color-cream: #fcfbf7;
+            --font-sans: 'Plus Jakarta Sans', 'Pyidaungsu', sans-serif;
+            --font-myanmar: 'Pyidaungsu', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-cream);
+            color: var(--color-brand-800);
+        }
+
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .btn-checkout {
+            background-color: var(--color-brand-600);
+            color: white;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-checkout:hover {
+            background-color: var(--color-brand-700);
+            color: white;
+        }
+        .cart-item-card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #eaeaea;
+        }
+        .summary-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Announcement Bar -->
+    <div class="custom-announcement">
+        <span>✨ မြန်မာနိုင်ငံအနှံ့နှင့် ပြည်ပသို့ ကုန်ပစ္စည်းများ အမြန်ပို့ဆောင်ပေးပါသည်</span>
+        <span class="custom-hotline-desktop">| Hotline: <a href="tel:3472601419"
+                class="custom-hotline-link">3472601419</a></span>
+    </div>
+
+    <!-- Nav bar  -->
+    <nav class="custom-header">
+
+        <div class="custom-header-container">
+            <div class="custom-header-wrapper">
+
+                <!-- Logo -->
+                <a href="index.html" class="custom-logo-link">
+                    <div class="custom-logo-icon">
+                        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <div>
+                        <span class="custom-brand-name">Auntycho</span>
+                        <span class="custom-brand-sub">Home & Traditional Produce</span>
+                    </div>
+                </a>
+
+                <!-- Search Bar (Desktop) -->
+                <div class="custom-search-desktop">
+                    <input type="text" id="searchInput" placeholder="ကုန်ပစ္စည်း အမျိုးအမည် ရှာဖွေပါ..."
+                        class="custom-search-input">
+                    <i class="fa-solid fa-magnifying-glass custom-search-icon"></i>
+                    <button id="clearSearch" class="custom-clear-btn hidden">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Right Nav Icons & Mobile Toggle -->
+                <div class="custom-right-nav">
+                    <a href="tel:3472601419" class="custom-phone-btn">
+                        <i class="fa-solid fa-phone text-emerald-600"></i>
+                        <span>3472601419</span>
+                    </a>
+
+                    <!-- Shopping Cart Button -->
+                    <a href="cart.html" id="openCartBtn"
+                        class="custom-icon-btn text-decoration-none position-relative d-inline-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cartCountBadge" class="custom-badge">2</span>
+                    </a>
+
+
+                    <!-- User Account Icon -->
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#authModal"
+                        class="custom-icon-btn text-decoration-none d-inline-flex align-items-center justify-content-center">
+                        <i class="fa-regular fa-user" style="font-size: 1.25rem;"></i>
+                    </a>
+
+
+                    <!-- Mobile Sidebar Toggle -->
+                    <button id="mobileMenuBtn" class="custom-mobile-toggle">
+                        <i class="fa-solid fa-bars-staggered" style="font-size: 1.25rem;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Search Bar -->
+            <div class="custom-search-mobile">
+                <div style="position: relative;">
+                    <input type="text" id="mobileSearchInput" placeholder="ကုန်ပစ္စည်း ရှာဖွေပါ..."
+                        class="custom-search-input">
+                    <i class="fa-solid fa-magnifying-glass custom-search-icon" style="left: 0.875rem;"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--  Mobile Menu Drawer (Home, Shop, About, Contact များအတွက်) -->
+    <div id="customMobileDrawer" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
+        style="z-index: 1055; backdrop-filter: blur(4px);">
+        <div class="position-fixed top-0 start-0 bottom-0 bg-white shadow-lg p-4 d-flex flex-column justify-content-between overflow-y-auto"
+            style="max-width: 320px; width: 100%;">
+            <div>
+                <!-- Header -->
+                <div class="d-flex align-items-center justify-content-between pb-3 border-bottom border-light mb-3">
+                    <h3 class="fw-bold text-dark fs-5 mb-0" style="font-family: var(--font-sans);">Main Menu</h3>
+                    <button id="closeMenuDrawerBtn" class="btn-close" aria-label="Close"></button>
+                </div>
+
+                <!-- Navigation Links -->
+                <!-- Navigation Links (mb-2.5 ဖြင့် အကွာအဝေး ပိုလှပသွားမည်) -->
+                <nav class="nav flex-column">
+                    <a href="index.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm mb-3">
+                        <i class="fa-solid fa-house text-success"></i> Home
+                    </a>
+                    <a href="product.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm mb-3">
+                        <i class="fa-solid fa-store text-success"></i> Shop / Products
+                    </a>
+                    <a href="about.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm mb-3">
+                        <i class="fa-solid fa-circle-info text-success"></i> About Us
+                    </a>
+                    <a href="contact.html"
+                        class="btn btn-light text-start text-dark text-xs sm:text-sm fw-medium d-flex align-items-center gap-2 py-3 px-3 rounded-2 text-decoration-none shadow-sm">
+                        <i class="fa-solid fa-phone text-success"></i> Contact
+                    </a>
+                </nav>
+
+            </div>
+
+            <div class="pt-3 border-top border-light mt-3">
+                <button id="closeMenuBtn" class="btn w-100 text-white fw-bold py-2.5 rounded-3 shadow-sm text-sm"
+                    style="background-color: var(--color-brand-700, #1b4332);">
+                    ပိတ်မည်
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Cart Page Content -->
+    <div class="container py-5">
+        <div class="mb-4 d-flex justify-content-between align-items-center">
+            <h3 class="fw-bold mb-0" style="font-family: var(--font-myanmar);">စျေးဝယ်လှည်း (Shopping Cart)</h3>
+            <a href="product.html" class="text-decoration-none small text-muted">
+                <i class="fa-solid fa-arrow-left me-1"></i> စျေးဆက်ဝယ်မည်
+            </a>
+        </div>
+
+        <div class="row g-4">
+            <!-- Product Items List -->
+            <div class="col-lg-8" id="cartItemsContainer">
+                <!-- Javascript ဖြင့် Item များကို ဤနေရာတွင် Dynamic ဖြင့် ထည့်သွင်းမည် -->
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-lg-4">
+                <div class="summary-card p-4 shadow-sm">
+                    <h5 class="fw-bold mb-3">Order Summary</h5>
+                    
+                    <div class="d-flex justify-content-between mb-2 text-muted small">
+                        <span>ပစ္စည်း စုစုပေါင်း (Subtotal)</span>
+                        <span class="fw-semibold text-dark" id="subTotal">$0.00</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3 text-muted small">
+                        <span>ပို့ဆောင်ခ (Estimated Shipping)</span>
+                        <span class="fw-semibold text-dark" id="shippingFee">$2.00</span>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="fw-bold fs-6">စုစုပေါင်း ကျသင့်ငွေ</span>
+                        <span class="fw-bold fs-5" style="color: var(--color-brand-700);" id="grandTotal">$0.00 USD</span>
+                    </div>
+
+                    <a href="checkout.html" class="btn btn-checkout btn-lg w-100 py-3 rounded-3 shadow-sm mb-2 text-center text-decoration-none">
+                        ငွေရှင်းမည် (Proceed to Checkout) <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- Login & Register  -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
+
+                <!-- Close Button -->
+                <button type="button" class="btn-close bg-white position-absolute top-0 end-0 m-3 z-3"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <!-- Brand Header -->
+                <div class="brand-header p-4 text-center text-white">
+                    <h4 class="fw-bold mb-1">Aunty Cho</h4>
+                    <p class="small text-white-50 mb-0">မြန်မာ့ရိုးရာ အစားအစာနှင့် အိမ်သုံးကုန်ပစ္စည်းများ</p>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body p-4 p-sm-5">
+
+                    <!-- 1. LOGIN FORM -->
+                    <div id="loginSection">
+                        <div class="mb-4 text-center">
+                            <h5 class="fw-bold text-dark">အကောင့်ဝင်ရောက်ရန်</h5>
+                            <p class="text-muted small">သင့်အကောင့်သို့ ဝင်ရောက်ရန် အချက်အလက်များ ဖြည့်ပါ။</p>
+                        </div>
+
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input type="email" class="form-control border-start-0"
+                                        placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control border-start-0" placeholder="••••••••"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-4 text-xs">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label text-muted" for="rememberMe">Remember me</label>
+                                </div>
+                                <a href="#" class="auth-switch-link small">Forget Password?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-brand w-100 mb-4">
+                                Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i>
+                            </button>
+
+                            <p class="text-center text-xs text-muted mb-0">
+                                Don't have an account?
+                                <a href="javascript:void(0)" onclick="switchForm('register')"
+                                    class="auth-switch-link">Sign up</a>
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- 2. REGISTER FORM -->
+                    <div id="registerSection" class="d-none">
+                        <div class="mb-4 text-center">
+                            <h5 class="fw-bold text-dark">အကောင့်အသစ်ဖွင့်ရန်</h5>
+                            <p class="text-muted small">စျေးဝယ်ယူရန်အတွက် အကောင့်အသစ် ပြုလုပ်ပါ။</p>
+                        </div>
+
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">အမည် (Full Name)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-regular fa-user"></i></span>
+                                    <input type="text" class="form-control border-start-0" placeholder="ဦး / ဒေါ်..."
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input type="email" class="form-control border-start-0"
+                                        placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-xs fw-semibold text-secondary">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control border-start-0" placeholder="••••••••"
+                                        required>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-brand w-100 mb-4">
+                                Sign up <i class="fa-solid fa-user-plus ms-2"></i>
+                            </button>
+
+                            <p class="text-center text-xs text-muted mb-0">
+                                Already have an account?
+                                <a href="javascript:void(0)" onclick="switchForm('login')" class="auth-switch-link">Sign
+                                    in</a>
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="custom-footer">
+        <div class="custom-footer-container">
+            <div class="custom-footer-grid">
+                <div>
+                    <span class="custom-footer-brand">Auntycho</span>
+                    <p class="custom-footer-desc">
+                        မြန်မာ့ရိုးရာ အစားအစာ၊ ငါးပိစပ်၊ တိုင်းရင်းဆေးနှင့် အနံ့အရသာစုံ ထုတ်ကုန်များကို
+                        အရည်အသွေးမြင့်မားစွာ ရောင်းချပေးနေပါသည်။
+                    </p>
+                </div>
+                <div>
+                    <h4 class="custom-footer-title">Quick Link</h4>
+                    <ul class="custom-footer-links">
+                        <li><a href="#" class="custom-footer-link">Aunty Cho အကြောင်း</a></li>
+                        <li><a href="#" class="custom-footer-link">Aunty Cho's Home</a></li>
+                        <li><a href="#" class="custom-footer-link">စည်းမျဉ်းနှင့် စည်းကမ်းများ</a></li>
+                        <li><a href="#" class="custom-footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="custom-footer-title">ဆက်သွယ်ရန်</h4>
+                    <p class="custom-footer-text mb-2">Phone: <a href="tel:3472601419"
+                            class="custom-footer-phone">3472601419</a></p>
+                    <p class="custom-footer-text">ပို့ဆောင်ရေး: မြန်မာနိုင်ငံအနှံ့ / International Shipping</p>
+                </div>
+            </div>
+            <div class="custom-footer-bottom">
+                <p>Copyright © 2026 Auntycho - All Rights Reserved.</p>
+                <p class="custom-footer-powered">Powered by <span class="fw-bold text-white">GoDaddy / Custom
+                        Store</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const customMobileDrawer = document.getElementById('customMobileDrawer');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuDrawerBtn = document.getElementById('closeMenuDrawerBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+            // Drawer ဖွင့်ခြင်း/ပိတ်ခြင်း Function
+            function toggleMenuDrawer(open) {
+                if (!customMobileDrawer) return;
+                if (open) {
+                    customMobileDrawer.classList.remove('d-none');
+                } else {
+                    customMobileDrawer.classList.add('d-none');
+                }
+            }
+
+            // ၁။ Menu ခလုတ်ကို နှိပ်ပါက Drawer ပွင့်ရန်
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMenuDrawer(true);
+                });
+            }
+
+            // ၂။ အပေါ်က X ခလုတ်ကို နှိပ်ပါက ပိတ်ရန်
+            if (closeMenuDrawerBtn) {
+                closeMenuDrawerBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMenuDrawer(false);
+                });
+            }
+
+            // ၃။ အောက်ဆုံးက "ပိတ်မည်" ခလုတ်ကို နှိပ်ပါက ပိတ်ရန်
+            if (closeMenuBtn) {
+                closeMenuBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMenuDrawer(false);
+                });
+            }
+
+            // ၄။ ဘေးနောက်ခံ အမည်းရောင်နေရာကို နှိပ်မိပါက ပိတ်ရန်
+            if (customMobileDrawer) {
+                customMobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === customMobileDrawer) {
+                        toggleMenuDrawer(false);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script>
+        function switchForm(target) {
+            const loginSection = document.getElementById('loginSection');
+            const registerSection = document.getElementById('registerSection');
+
+            if (target === 'register') {
+                loginSection.classList.add('d-none');
+                registerSection.classList.remove('d-none');
+            } else {
+                registerSection.classList.add('d-none');
+                loginSection.classList.remove('d-none');
+            }
+        }
+    </script>
+    
+    <!-- JavaScript for Dynamic Rendering & Delete -->
+    <script>
+        // စျေးဝယ်လှည်းထဲရှိ ပစ္စည်းအချက်အလက်များ (LocalStorage မရှိသေးလျှင် ဤ Data များကို ပထမဆုံးပြမည်)
+        let cart = JSON.parse(localStorage.getItem('auntyChoCart')) || [
+            { id: 1, name: 'ပန်းဝတ်မှုန်အပူငြိမ်းဆေး', price: 5.99, qty: 1, img: 'https://via.placeholder.com/100' },
+            { id: 2, name: 'မြန်မာ့သနပ်ခါးတုံး', price: 30.00, qty: 1, img: 'https://via.placeholder.com/100' }
+        ];
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-5 bg-white rounded-4 border shadow-sm">
+                        <i class="fa-solid fa-cart-shopping fs-1 text-muted mb-3 opacity-50"></i>
+                        <h5 class="fw-bold text-muted">သင့် စျေးဝယ်လှည်းထဲတွင် ပစ္စည်းများ မရှိသေးပါ</h5>
+                        <a href="product.html" class="btn btn-brand mt-3 px-4 py-2 rounded-3 text-decoration-none" style="background-color: var(--color-brand-600); color: white;">ပစ္စည်းများ ကြည့်မည်</a>
+                    </div>
+                `;
+                document.getElementById('subTotal').innerText = '$0.00';
+                document.getElementById('shippingFee').innerText = '$0.00';
+                document.getElementById('grandTotal').innerText = '$0.00 USD';
+                localStorage.setItem('auntyChoCart', JSON.stringify(cart));
+                return;
+            }
+
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                subtotal += item.price * item.qty;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item-card p-3 mb-3 shadow-sm';
+                itemDiv.innerHTML = `
+                    <div class="row align-items-center g-3">
+                        <div class="col-3 col-sm-2">
+                            <img src="${item.img}" class="img-fluid rounded-3 border" alt="Product">
+                        </div>
+                        <div class="col-9 col-sm-4">
+                            <h6 class="fw-bold mb-1 text-dark" style="font-family: var(--font-myanmar);">${item.name}</h6>
+                            <p class="text-muted small mb-0">$${item.price.toFixed(2)} USD</p>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="input-group rounded-3 border bg-white overflow-hidden shadow-sm" style="max-width: 110px;">
+                                <button class="btn btn-link text-dark border-0 px-2 py-1 text-decoration-none" type="button" onclick="changeQty(${index}, -1)">
+                                    <i class="fa-solid fa-minus text-xs"></i>
+                                </button>
+                                <input type="number" class="form-control text-center border-0 fw-bold px-0 bg-transparent" value="${item.qty}" readonly>
+                                <button class="btn btn-link text-dark border-0 px-2 py-1 text-decoration-none" type="button" onclick="changeQty(${index}, 1)">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-2 text-end">
+                            <span class="fw-bold text-dark">$${(item.price * item.qty).toFixed(2)}</span>
+                        </div>
+                        <div class="col-2 col-sm-1 text-end">
+                            <button class="btn btn-link text-danger p-0 border-0" onclick="removeItem(${index})">
+                                <i class="fa-regular fa-trash-can fs-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(itemDiv);
+            });
+
+            let shipping = 2.00;
+            let grandTotal = subtotal + shipping;
+
+            document.getElementById('subTotal').innerText = `$${subtotal.toFixed(2)}`;
+            document.getElementById('shippingFee').innerText = `$${shipping.toFixed(2)}`;
+            document.getElementById('grandTotal').innerText = `$${grandTotal.toFixed(2)} USD`;
+
+            // LocalStorage ထဲတွင် သိမ်းဆည်းထားမည်
+            localStorage.setItem('auntyChoCart', JSON.stringify(cart));
+        }
+
+        function changeQty(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty < 1) {
+                cart[index].qty = 1;
+            }
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1); // Array ထဲမှ ဖယ်ရှားမည်
+            renderCart(); // Screen ကို အသစ်ပြန်ပေါ်စေမည်
+        }
+
+        // Page စတင်ဖွင့်ချိန်တွင် Cart ကို Load လုပ်ရန်
+        window.onload = function() {
+            renderCart();
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+

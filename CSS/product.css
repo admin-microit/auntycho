@@ -152,8 +152,6 @@ body {
     opacity: 0.85;
 }
 
-
-
 /* ==========================================================
    PRODUCT CARD HOVER EFFECTS
    ========================================================== */
@@ -178,7 +176,6 @@ body {
 .card:hover .overflow-hidden img {
     transform: scale(1.08) !important;
 }
-
 
 /* ==========================================================
    PAGINATION STYLES

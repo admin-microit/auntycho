@@ -27,13 +27,15 @@
 
 <body>
 
+    <!-- Announcement Bar -->
+    <div class="custom-announcement">
+        <span>✨ မြန်မာနိုင်ငံအနှံ့နှင့် ပြည်ပသို့ ကုန်ပစ္စည်းများ အမြန်ပို့ဆောင်ပေးပါသည်</span>
+        <span class="custom-hotline-desktop">| Hotline: <a href="tel:3472601419"
+                class="custom-hotline-link">3472601419</a></span>
+    </div>
+
+    <!-- Nav bar  -->
     <nav class="custom-header">
-        <!-- Announcement Bar -->
-        <div class="custom-announcement">
-            <span>✨ မြန်မာနိုင်ငံအနှံ့နှင့် ပြည်ပသို့ ကုန်ပစ္စည်းများ အမြန်ပို့ဆောင်ပေးပါသည်</span>
-            <span class="custom-hotline-desktop">| Hotline: <a href="tel:3472601419"
-                    class="custom-hotline-link">3472601419</a></span>
-        </div>
 
         <div class="custom-header-container">
             <div class="custom-header-wrapper">
@@ -67,13 +69,15 @@
                     </a>
 
                     <!-- Shopping Cart Button -->
-                    <button id="openCartBtn" class="custom-icon-btn">
+                    <a href="cart.html" id="openCartBtn"
+                        class="custom-icon-btn text-decoration-none position-relative d-inline-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span id="cartCountBadge" class="custom-badge">0</span>
-                    </button>
+                    </a>
+
 
                     <!-- User Account Icon -->
-                    <a href="login.html"
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#authModal"
                         class="custom-icon-btn text-decoration-none d-inline-flex align-items-center justify-content-center">
                         <i class="fa-regular fa-user" style="font-size: 1.25rem;"></i>
                     </a>
@@ -97,7 +101,7 @@
         </div>
     </nav>
 
-    <!-- 1. Mobile Menu Drawer (Home, Shop, About, Contact များအတွက်) -->
+    <!--  Mobile Menu Drawer (Home, Shop, About, Contact များအတွက်) -->
     <div id="customMobileDrawer" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
         style="z-index: 1055; backdrop-filter: blur(4px);">
         <div class="position-fixed top-0 start-0 bottom-0 bg-white shadow-lg p-4 d-flex flex-column justify-content-between overflow-y-auto"
@@ -140,7 +144,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Hero Section -->
     <section class="custom-hero-section">
@@ -364,9 +367,11 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-warm-gold btn-sm w-100 fw-bold py-2">
-                                <i class="fa-solid fa-cart-shopping me-1"></i> အသေးစိတ်ကြည့်မည်
-                            </button>
+                            <a href="detail.html"
+                                class="btn btn-warm-gold btn-sm w-100 fw-bold py-2 text-center text-decoration-none">
+                                <i class="fa-solid fa-cart-shopping me-1"></i> Shop Now
+                            </a>
+
                         </div>
 
                     </div>
@@ -395,7 +400,7 @@
                             </div>
 
                             <button class="btn btn-warm-gold btn-sm w-100 fw-bold py-2">
-                                <i class="fa-solid fa-cart-shopping me-1"></i> အသေးစိတ်ကြည့်မည်
+                                <i class="fa-solid fa-cart-shopping me-1"></i> Shop Now
                             </button>
                         </div>
 
@@ -425,7 +430,7 @@
                             </div>
 
                             <button class="btn btn-warm-gold btn-sm w-100 fw-bold py-2">
-                                <i class="fa-solid fa-cart-shopping me-1"></i> အသေးစိတ်ကြည့်မည်
+                                <i class="fa-solid fa-cart-shopping me-1"></i> Shop Now
                             </button>
                         </div>
 
@@ -453,7 +458,7 @@
                             </div>
 
                             <button class="btn btn-warm-gold btn-sm w-100 fw-bold">
-                                <i class="fa-solid fa-cart-shopping me-1"></i> အသေးစိတ်ကြည့်မည်
+                                <i class="fa-solid fa-cart-shopping me-1"></i> Shop Now
                             </button>
                         </div>
 
@@ -637,6 +642,127 @@
         </div>
     </section>
 
+    <!-- Login & Register  -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
+
+                <!-- Close Button -->
+                <button type="button" class="btn-close bg-white position-absolute top-0 end-0 m-3 z-3"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <!-- Brand Header -->
+                <div class="brand-header p-4 text-center text-white">
+                    <h4 class="fw-bold mb-1">Aunty Cho</h4>
+                    <p class="small text-white-50 mb-0">မြန်မာ့ရိုးရာ အစားအစာနှင့် အိမ်သုံးကုန်ပစ္စည်းများ</p>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body p-4 p-sm-5">
+
+                    <!-- 1. LOGIN FORM -->
+                    <div id="loginSection">
+                        <div class="mb-4 text-center">
+                            <h5 class="fw-bold text-dark">အကောင့်ဝင်ရောက်ရန်</h5>
+                            <p class="text-muted small">သင့်အကောင့်သို့ ဝင်ရောက်ရန် အချက်အလက်များ ဖြည့်ပါ။</p>
+                        </div>
+
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input type="email" class="form-control border-start-0"
+                                        placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control border-start-0" placeholder="••••••••"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-4 text-xs">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label text-muted" for="rememberMe">Remember me</label>
+                                </div>
+                                <a href="#" class="auth-switch-link small">Forget Password?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-brand w-100 mb-4">
+                                Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i>
+                            </button>
+
+                            <p class="text-center text-xs text-muted mb-0">
+                                Don't have an account?
+                                <a href="javascript:void(0)" onclick="switchForm('register')"
+                                    class="auth-switch-link">Sign up</a>
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- 2. REGISTER FORM -->
+                    <div id="registerSection" class="d-none">
+                        <div class="mb-4 text-center">
+                            <h5 class="fw-bold text-dark">အကောင့်အသစ်ဖွင့်ရန်</h5>
+                            <p class="text-muted small">စျေးဝယ်ယူရန်အတွက် အကောင့်အသစ် ပြုလုပ်ပါ။</p>
+                        </div>
+
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">အမည် (Full Name)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-regular fa-user"></i></span>
+                                    <input type="text" class="form-control border-start-0" placeholder="ဦး / ဒေါ်..."
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-xs fw-semibold text-secondary">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-regular fa-envelope"></i></span>
+                                    <input type="email" class="form-control border-start-0"
+                                        placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-xs fw-semibold text-secondary">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i
+                                            class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control border-start-0" placeholder="••••••••"
+                                        required>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-brand w-100 mb-4">
+                                Sign up <i class="fa-solid fa-user-plus ms-2"></i>
+                            </button>
+
+                            <p class="text-center text-xs text-muted mb-0">
+                                Already have an account?
+                                <a href="javascript:void(0)" onclick="switchForm('login')" class="auth-switch-link">Sign
+                                    in</a>
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer Section -->
     <footer class="custom-footer">
         <div class="custom-footer-container">
@@ -674,11 +800,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Elements များကို ဖမ်းယူခြင်း
+
             const customMobileDrawer = document.getElementById('customMobileDrawer');
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn'); // ဖွင့်မည့် Menu ခလုတ်
-            const closeMenuDrawerBtn = document.getElementById('closeMenuDrawerBtn'); // အပေါ်က X ခလုတ်
-            const closeMenuBtn = document.getElementById('closeMenuBtn'); // အောက်ဆုံးက ပိတ်မည် ခလုတ်
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuDrawerBtn = document.getElementById('closeMenuDrawerBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
 
             // Drawer ဖွင့်ခြင်း/ပိတ်ခြင်း Function
             function toggleMenuDrawer(open) {
@@ -724,6 +850,22 @@
             }
         });
     </script>
+
+    <script>
+        function switchForm(target) {
+            const loginSection = document.getElementById('loginSection');
+            const registerSection = document.getElementById('registerSection');
+
+            if (target === 'register') {
+                loginSection.classList.add('d-none');
+                registerSection.classList.remove('d-none');
+            } else {
+                registerSection.classList.add('d-none');
+                loginSection.classList.remove('d-none');
+            }
+        }
+    </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
